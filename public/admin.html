@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF8">
+      <title>Panel de Admin</title>
+      <style>
+        /* (Tus mismos estilos CSS) */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        h1, h2 { color: #333; }
+      </style>
+    </head>
+    <body>
+      <h1>Panel de Administración</h1>
+
+      <h2>Pagos Pendientes</h2>
+      <p>Jugadores que aún no han pagado la entrada de $1.5.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del Jugador</th>
+            <th>Teléfono</th>
+            <th>Cédula</th>
+            <th>Torneo</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filasPendientes}
+        </tbody>
+      </table>
+
+      <h2>Jugadores Verificados (Registro de Kills)</h2>
+      <p>Jugadores que ya pagaron. Registra sus kills aquí al terminar la partida.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre del Jugador</th>
+            <th>Torneo</th>
+            <th>Kills (Registrar)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filasVerificadas}
+        </tbody>
+      </table>
+
+    </body>
+    </html>

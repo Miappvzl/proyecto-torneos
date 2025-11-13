@@ -1,0 +1,7 @@
+# Este es tu archivo .gitignore
+
+# Ignorar las dependencias de Node
+node_modules
+
+# ¡Ignorar el archivo de claves secretas!
+.env
