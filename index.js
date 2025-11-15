@@ -1,4 +1,4 @@
-// 1. Importamos Express
+
 require('dotenv').config();
 const express = require('express');
 
@@ -16,6 +16,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 // --- El resto de tu código sigue igual ---
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(express.static('public'));
 
 async function obtenerTasaBCV() {
   const API_URL = 'https://ve.dolarapi.com/v1/dolares/oficial';
@@ -43,134 +44,52 @@ async function obtenerTasaBCV() {
     // --- FIN DE MIDDLEWARES ---
 
     // --- NUEVA RUTA PRINCIPAL (FORMULARIO DINÁMICO) ---
-app.get('/', async (req, res) => {
-  console.log('Petición recibida en / (Ruta Principal)');
-
-  // 1. Obtenemos los torneos de la base de datos
-  const { data: torneos, error } = await supabase
-    .from('torneos')
-    .select('id, nombre'); // Solo queremos el id y el nombre
-
-  if (error) {
-    console.error('Error al obtener torneos:', error.message);
-    return res.send(`<h1>Error cargando torneos: ${error.message}</h1>`);
-  }
-  
-  console.log('Torneos obtenidos:', torneos);
-
-  // 2. Creamos el HTML del <select> (la lista desplegable) dinámicamente
-  // (Usamos .map() para convertir cada objeto 'torneo' en una <option>)
-  let opcionesDeTorneos = '';
-  if (torneos && torneos.length > 0) {
-    opcionesDeTorneos = torneos.map(torneo => {
-      return `<option value="${torneo.id}">${torneo.nombre}</option>`;
-    }).join(''); // .join() une todo el array en un solo string
-  } else {
-    opcionesDeTorneos = '<option value="" disabled>No hay torneos disponibles</option>';
-  }
 
   // 3. Enviamos el formulario HTML completo como respuesta
   // (Este es el mismo HTML de tu archivo /public/index.html, pero con el
-  // <select> de torneos y la lógica de la Tasa BCV añadidas)
-
-
-
-
-async function obtenerTasaBCV() {
-  // ... (esta función no cambia)
-  const API_URL = 'https://ve.dolarapi.com/v1/dolares/oficial';
-  try {
-    const respuesta = await fetch(API_URL);
-    if (!respuesta.ok) {
-      throw new Error(`Error HTTP: ${respuesta.status}`);
-    }
-    const datos = await respuesta.json();
-    return datos.promedio;
-  } catch (error) {
-    console.error('¡Falló la conexión con DolarAPI!', error.message);
-    return null;
-  }
-}
-
-
-const tasaBCV = await obtenerTasaBCV(); // ¡Asegúrate que tu función 'obtenerTasaBCV' exista!
-  const montoInscripcionBs = (1.5 * tasaBCV).toFixed(2);
-
+  
 
   // 4. Enviamos el HTML completo
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro de Torneo</title>
-        <style>
-            /* (Tus mismos estilos CSS van aquí) */
-            body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
-            form { max-width: 500px; margin: 0 auto; padding: 20px; background: #fff; border-radius: 8px; }
-            div { margin-bottom: 15px; }
-            label { display: block; margin-bottom: 5px; font-weight: bold; }
-            input, select { width: 95%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
-            button { background: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
-            .tasa-bcv { background: #e0f7fa; border: 1px solid #00acc1; padding: 10px; border-radius: 5px; }
-        </style>
-    </head>
-    <body>
 
-        <h1>Registro de Jugador</h1>
-        <p>Inscríbete en la plataforma para participar en los torneos.</p>
-        
-        <div class="tasa-bcv">
-            <b>Tasa BCV del día:</b> ${tasaBCV} Bs. <br>
-            <b>Monto de Inscripción:</b> $1.50 = <strong>${montoInscripcionBs} Bs.</strong>
-        </div>
-        <br>
 
-        <form action="/registrar-jugador" method="POST">
-            
-            <div>
-                <label for="torneo_id">Selecciona el Torneo:</label>
-                <select id="torneo_id" name="torneo_id" required>
-                    ${opcionesDeTorneos}
-                </select>
-            </div>
-            
-            <hr>
 
-            <div>
-                <label for="nombre_completo">Nombre Completo:</label>
-                <input type="text" id="nombre_completo" name="nombre_completo" required>
-            </div>
-            <div>
-                <label for="cod_id">Tu ID de Call of Duty:</label>
-                <input type="text" id="cod_id" name="cod_id" required>
-            </div>
-            <div>
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <hr>
-            <p>Datos para Pago Móvil (para pagarte tus kills):</p>
-            <div>
-                <label for="cedula">Cédula:</label>
-                <input type="text" id="cedula" name="cedula" required>
-            </div>
-            <div>
-                <label for="telefono">Teléfono (04XX...):</label>
-                <input type="text" id="telefono" name="telefono" required>
-            </div>
-            <div>
-                <label for="banco">Banco:</label>
-                <input type="text" id="banco" name="banco" required>
-            </div>
-            <button type="submit">Registrarme e Inscribirme</button>
-        </form>
-
-    </body>
-    </html>
-  `);
+// La ruta principal ahora solo sirve el index.html de la carpeta 'public'
+app.get('/', (req, res) => {
+  // res.sendFile ya no es necesario, express.static lo hace automático
+  // Pero si quieres ser explícito, puedes usar:
+  res.sendFile(__dirname + '/public/index.html');
 });
 
+// --- NUEVO ENDPOINT DE API PARA DATOS DEL FORMULARIO ---
+
+app.get('/api/datos-formulario', async (req, res) => {
+  console.log('Petición recibida en /api/datos-formulario');
+
+  try {
+    // 1. Obtenemos la Tasa
+    const tasaBCV = await obtenerTasaBCV(); // ¡Asegúrate que esta función exista!
+
+    // 2. Obtenemos los Torneos
+    const { data: torneos, error } = await supabase
+      .from('torneos')
+      .select('id, nombre');
+
+    if (error) {
+      throw new Error(`Error de Supabase: ${error.message}`);
+    }
+
+    // 3. Enviamos ambos datos como un solo JSON
+    res.json({
+      tasa: tasaBCV,
+      montoBs: (tasaBCV * 1.5).toFixed(2),
+      listaTorneos: torneos
+    });
+
+  } catch (err) {
+    console.error('Error en /api/datos-formulario:', err.message);
+    res.status(500).json({ error: 'No se pudieron cargar los datos' });
+  }
+});
 
 // --- NUEVA RUTA PARA CREAR UN TORNEO DE PRUEBA ---
 
