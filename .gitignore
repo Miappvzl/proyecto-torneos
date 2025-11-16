@@ -4,7 +4,3 @@ node_modules
 # ¡Ignorar el archivo de claves secretas!
 .env
 
-# Ignorar archivos basura del proyecto anterior
-/public
-/styles
-/node

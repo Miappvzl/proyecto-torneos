@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Nultien Bold';
+    src: url('fonts/Nultien-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    margin: 0;
+    /* Este es el fondo oscuro del sitio web */
+    background-color: #030304;
+    color: #d7d7d8;
+    font-family: 'Lalo', sans-serif;
+}
+
+p {
+    font-family: 'Lato', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+h1 {
+    font-family: Nultien Bold, sans-serif;
+    color: #a56fff;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+
+.hero-container {
+    /* Usamos 'relative' para posicionar las formas dentro */
+    margin-bottom: 20rem;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* Puedes ajustar la altura */
+
+    /* 'overflow: hidden' es CLAVE para que el blur no se salga */
+
+
+    /* Solo para centrar el texto de ejemplo */
+    display: grid;
+    place-items: center;
+}
+
+.img-hero__container {
+    display: -webkit-inline-box;
+    position: relative;
+    width: 56%;
+    height: 100%;
+    z-index: -1;
+    top: 96px;
+}
+
+
+.img-hero {
+    mask-image: linear-gradient(to bottom, #00000000 17%,
+            /* Arriba: transparente (invisible) */
+            #000000 41%,
+            /* Inicio del área visible */
+            #00000000 90%,
+            /* Fin del área visible */
+            #00000000 100%
+            /* Abajo: transparente (invisible) */
+        );
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Este contenedor es un 'lienzo' para las formas de fondo */
+.aurora-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    /* Detrás del contenido */
+}
+
+/* Esta es la clase base para TODAS las formas */
+.shape {
+    position: absolute;
+
+    /* Usar círculos u óvalos es lo más sencillo */
+    border-radius: 50%;
+
+    /* La opacidad ayuda a que los colores se mezclen bien */
+    opacity: 0.6;
+}
+
+
+/* * AHORA TRADUCIMOS LAS CAPAS DEL DIAGRAMA
+     * (Ajusté las posiciones y tamaños para que se parezca 
+     * más al efecto de "reloj de arena" de tu imagen)
+    */
+
+/* Capa 1: El blur más grande (166px) */
+.shape-1 {
+    background: #21004d;
+    width: 99vw;
+    height: 200px;
+    top: -132px;
+    left: calc(-9px);
+    opacity: 0.8;
+    filter: blur(24px);
+
+}
+
+/* Capa 2: El blur medio (35px) */
+.shape-2 {
+    background: #ab02ff;
+    width: 50vw;
+    top: -187px;
+    height: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(35px);
+    opacity: 0.7;
+}
+
+/* Capa 3: El blur más pequeño (24px) */
+.shape-3 {
+    background: #7002b342;
+    width: 40vw;
+    height: 316px;
+    top: 192px;
+    left: -31%;
+    right: 0;
+    opacity: 0.8;
+    filter: blur(24px);
+}
+
+
+/* Contenido de ejemplo (como el "Comprehensive Payment...") */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* Se asegura que esté por encima */
+    z-index: 10;
+    /* z-index más alto que el fondo */
+    text-align: center;
+}
+
+.content h1 {
+    text-shadow: -1px 1px 11px #000000;
+    letter-spacing: 3px;
+    font-size: 3.8rem;
+    margin: 0;
+    font-family: Nultien Bold, sans-serif;
+    color: #e3e3e3;
+    font-weight: lighter;
+}
+
+
+.section-capturebcv {
+    margin-bottom: 9rem;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* overflow: hidden; */
+    display: grid;
+    place-items: center;
+}
+
+
+section.section-capturebcv p {
+    width: 60%;
+    font-size: 2rem;
+    font-family: Lato, sans-serif;
+    text-align: center;
+
+
+}
+
+
+
+
+form {
+    display: flex;
+    width: 60%;
+    max-width: 515px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #0f0f0fb3;
+    border-radius: 10px;
+    border: 1.5px solid #2a2a2a;
+    box-shadow: 0 0 35px 25px #10031f36;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    align-self: start;
+    padding-left: 24px;
+
+}
+
+input,
+select {
+    width: 90%;
+    padding: 8px;
+    border: 1.5px solid #7000ff63;
+    background-color: #6f00ff0a;
+    border-radius: 6px;
+}
+
+button {
+    background: #6320ff9e;
+    color: #d7d7d8;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 90%;
+}
+
+.tasa-bcv {
+    width: 60%;
+    max-width: 516px;
+    background: #0c0c0c;
+    border: 1.5px solid #2a2a2a;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 0 35px 25px #10031f36;
+}
+
+.aurora-background2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.shape-11 {
+    background: #3c009f7d;
+    width: 18rem;
+    height: 15rem;
+    top: 18rem;
+    left: 50%;
+    transform: translateX(-125%);
+    opacity: 0.8;
+    filter: blur(24px);
+}
+
+
+.shape-22 {
+    background: #a400ffa8;
+    width: 23rem;
+    height: 300px;
+    top: 39rem;
+    left: 50%;
+    transform: translateX(-2%);
+    filter: blur(36px);
+    opacity: 0.7;
+}
+
+.shape-33 {
+      background: #cb2bff4d;
+    width: 98vw;
+    height: 1rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    filter: blur(24px);
+}
+
+
+
+b,
+strong {
+    color: #e3e3e3;
+    font-family: 'Lato', sans-serif;
+}

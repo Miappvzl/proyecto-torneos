@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Torneo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asimovian&family=Bruno+Ace+SC&family=Foldit:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Sixtyfour&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <div class="hero-container">
+
+        <div class="aurora-background">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <div class="content">
+            <div class="img-hero__container">
+                <img class="img-hero" src="img/Gemini_Generated_Image_qb31q9qb31q9qb31 (1) (12).png" alt="">
+            </div>
+            <h1>TORNEOS COD MOBILE<br>Gana por cada kill</h1>
+        </div>
+
+    </div>
+
+    <section class="section-capturebcv">
+
+        <h1>Registro de Jugador</h1>
+        <p>Inscríbete en la plataforma para participar en los torneos.</p>
+
+
+
+
+        <div class="tasa-bcv">
+            <div id="info-tasa-bcv">Cargando tasa...</div>
+        </div>
+        <br>
+
+
+        <div class="aurora-background2">
+            <div class="shape shape-11"></div>
+            <div class="shape shape-22"></div>
+            <div class="shape shape-33"></div>
+        </div>
+
+
+
+
+        <form action="/registrar-jugador" method="POST">
+
+            <div class="input-container">
+                <label for="torneo_id">Selecciona el Torneo:</label>
+                <select id="torneo_id" name="torneo_id" required>
+                    ${opcionesDeTorneos}
+                </select>
+            </div>
+
+
+
+            <div class="input-container">
+                <label for="nombre_completo">Nombre Completo:</label>
+                <input type="text" id="nombre_completo" name="nombre_completo" required>
+            </div>
+            <div class="input-container">
+                <label for="cod_id">Tu ID de Call of Duty:</label>
+                <input type="text" id="cod_id" name="cod_id" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <p>Datos de tu Pago Móvil (para pagarte tus kills):</p>
+            <div class="input-container">
+                <label for="cedula">Cédula:</label>
+                <input type="text" id="cedula" name="cedula" required>
+            </div>
+            <div class="input-container">
+                <label for="telefono">Teléfono (04XX...):</label>
+                <input type="text" id="telefono" name="telefono" required>
+            </div>
+            <div class="input-container">
+                <label for="banco">Banco:</label>
+                <input type="text" id="banco" name="banco" required>
+            </div>
+            <button type="submit">Registrarme e Inscribirme</button>
+        </form>
+
+    </section>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
