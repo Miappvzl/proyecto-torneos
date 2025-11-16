@@ -191,7 +191,7 @@ section.section-capturebcv p {
 form {
     display: flex;
     width: 60%;
-    max-width: 515px;
+    /* max-width: 515px; */
     margin: 0 auto;
     padding: 20px;
     background: #0f0f0fb3;
@@ -222,6 +222,14 @@ label {
 
 }
 
+
+
+input:focus,
+select:focus{
+    outline: none;
+    background-color: #000000c9; 
+}
+
 input,
 select {
     width: 90%;
@@ -229,12 +237,18 @@ select {
     border: 1.5px solid #7000ff63;
     background-color: #6f00ff0a;
     border-radius: 6px;
+        font-size: 1.27rem;
+        color: #d7d7d8;
+        transition: background-color 0.3s;
+
 }
+
+
 
 button {
     background: #6320ff9e;
     color: #d7d7d8;
-    font-size: 1.2rem;
+    font-size: 1.45rem;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -244,13 +258,21 @@ button {
 
 .tasa-bcv {
     width: 60%;
-    max-width: 516px;
+    /* max-width: 516px; */
     background: #0c0c0c;
     border: 1.5px solid #2a2a2a;
     margin: 0 auto;
-    padding: 12px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 35px 25px #10031f36;
+}
+
+.tasa-bcv b {
+    font-size: 1.5rem;
+}
+
+.tasa-bcv b:first-child{
+    color: #ad9bff;
 }
 
 .aurora-background2 {
