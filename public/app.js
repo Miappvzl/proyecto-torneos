@@ -17,8 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
       // 1. Rellena la información de la Tasa BCV
       if (divTasa) {
         divTasa.innerHTML = `
-          <b>Tasa BCV del día:</b> ${datos.tasa} Bs. <br>
-          <b>Monto de Inscripción:</b> $1.50 = <strong>${datos.montoBs} Bs.</strong>
+          <b>Tasa BCV del día: ${datos.tasa} Bs. </b> <br>
+          <b>Monto de Inscripción: $1.50 = ${datos.montoBs} Bs.</b>
         `;
       }
       

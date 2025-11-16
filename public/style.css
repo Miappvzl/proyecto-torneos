@@ -18,43 +18,36 @@ body {
     font-family: 'Lalo', sans-serif;
 }
 
+
+
 p {
+    width: 70%;
+    text-align: center;
+    font-size: 3rem;
     font-family: 'Lato', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
-h1 {
-    font-family: Nultien Bold, sans-serif;
-    color: #a56fff;
-    font-size: 2.5rem;
-    text-align: center;
-}
 
 
 
 .hero-container {
-    /* Usamos 'relative' para posicionar las formas dentro */
+
     margin-bottom: 20rem;
     position: relative;
     width: 100%;
-    height: 600px;
-    /* Puedes ajustar la altura */
-
-    /* 'overflow: hidden' es CLAVE para que el blur no se salga */
-
-
-    /* Solo para centrar el texto de ejemplo */
+    height: 100vh;
     display: grid;
     place-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .img-hero__container {
-    display: -webkit-inline-box;
-    position: relative;
-    width: 56%;
-    height: 100%;
-    z-index: -1;
-    top: 96px;
+    width: 100%;
+    max-width: 981px;
+    height: 100vh;
+
 }
 
 
@@ -143,24 +136,70 @@ h1 {
 
 
 /* Contenido de ejemplo (como el "Comprehensive Payment...") */
+
+
 .content {
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    /* Se asegura que esté por encima */
     z-index: 10;
-    /* z-index más alto que el fondo */
     text-align: center;
 }
 
+h1 {
+    font-family: Nultien Bold, sans-serif;
+    color: #a56fff;
+    font-size: 7rem;
+    text-align: center;
+}
+
+
+@media (min-width: 600px) and (max-width: 1000px) {
+    h1 {
+        font-size: 6rem;
+    }
+}
+
+
+@media (min-width: 1001px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+
+.title-hero__container {
+    gap: .2rem;
+    display: flex;
+    position: relative;
+    bottom: 20rem;
+    width: 88%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 1000px) {
+    .title-hero__container {
+        bottom: 10rem;
+    }
+
+}
+
+
+.title-hero__container :last-child {
+    color: #a56fff;
+}
+
 .content h1 {
-    text-shadow: -1px 1px 11px #000000;
+    text-shadow: -1px 1px 11px #ffffff69;
     letter-spacing: 3px;
-    font-size: 3.8rem;
     margin: 0;
     font-family: Nultien Bold, sans-serif;
-    color: #e3e3e3;
+    color: #eddfff;
     font-weight: lighter;
 }
 
@@ -169,111 +208,142 @@ h1 {
     margin-bottom: 9rem;
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 100vh;
     /* overflow: hidden; */
     display: grid;
     place-items: center;
 }
 
 
-section.section-capturebcv p {
-    width: 60%;
-    font-size: 2rem;
-    font-family: Lato, sans-serif;
-    text-align: center;
-
-
-}
-
-
-
-
-form {
-    display: flex;
-    width: 60%;
-    /* max-width: 515px; */
-    margin: 0 auto;
-    padding: 20px;
-    background: #0f0f0fb3;
-    border-radius: 10px;
-    border: 1.5px solid #2a2a2a;
-    box-shadow: 0 0 35px 25px #10031f36;
-    flex-direction: column;
-    align-items: center;
-}
-
-.input-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-div {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    align-self: start;
-    padding-left: 24px;
-
-}
-
-
-
-input:focus,
-select:focus{
-    outline: none;
-    background-color: #000000c9; 
-}
-
-input,
-select {
-    width: 90%;
-    padding: 8px;
-    border: 1.5px solid #7000ff63;
-    background-color: #6f00ff0a;
-    border-radius: 6px;
-        font-size: 1.27rem;
-        color: #d7d7d8;
-        transition: background-color 0.3s;
-
-}
-
-
-
-button {
-    background: #6320ff9e;
-    color: #d7d7d8;
-    font-size: 1.45rem;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 90%;
-}
 
 .tasa-bcv {
-    width: 60%;
+    text-align: center;
+    backdrop-filter: blur(58px);
+    width: 90%;
     /* max-width: 516px; */
-    background: #0c0c0c;
+    background: #0c0b0c;
     border: 1.5px solid #2a2a2a;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1.45rem;
     border-radius: 10px;
     box-shadow: 0 0 35px 25px #10031f36;
 }
 
 .tasa-bcv b {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
-.tasa-bcv b:first-child{
+.tasa-bcv b:first-child {
     color: #ad9bff;
 }
+
+
+@media (min-width: 600px) and (max-width: 1000px) {
+
+    p,
+    .tasa-bcv b,
+    form {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1001px) {
+
+    p,
+    .tasa-bcv b,
+    form {
+        font-size: 1.4rem;
+    }
+}
+
+
+
+/* Estilos por defecto (móvil primero): Todo en una sola columna */
+form {
+    width: 90%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background-color: #0c0c0ccc;
+    padding: 50px;
+    border: 1.5px solid #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 0 35px 25px #10031f36;
+    backdrop-filter: blur(58px);
+
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+input,
+button,
+select {
+    padding: 20px;
+    width: 100%;
+    border: 1.5px solid #7000ff63;
+    background-color: #6f00ff0a;
+    border-radius: 10px;
+    font-size: 2.27rem;
+    color: #d7d7d8;
+    transition: background-color 0.3s;
+}
+
+form p {
+    color: #ac9afd;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    margin-top: .8rem;
+    background-color: #6709ff;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 2rem;
+    font-family: Lalo, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* MEDIA QUERY: Aplica estilos de dos columnas solo a partir de 1200px */
+@media (min-width: 1020px) {
+    form {
+        display: grid;
+        /* Crea dos columnas de igual tamaño (1fr) */
+        grid-template-columns: 1fr 1fr;
+        /* Espacio entre las columnas y las filas */
+        gap: 30px;
+    }
+
+    input, select, button {
+        font-size: 1.30rem;
+                padding: 15px;
+    }
+    /* Asegura que el botón de envío ocupe las dos columnas */
+    button {
+        grid-column: span 2;
+        /* Indica que este elemento debe abarcar 2 columnas */
+    }
+
+     .select-container{
+        grid-column: span 2;
+    }
+}
+
+
+
+
 
 .aurora-background2 {
     position: absolute;
@@ -308,7 +378,7 @@ button {
 }
 
 .shape-33 {
-      background: #cb2bff4d;
+    background: #cb2bff4d;
     width: 98vw;
     height: 1rem;
     top: 2rem;
