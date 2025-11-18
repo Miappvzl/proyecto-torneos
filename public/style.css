@@ -52,20 +52,12 @@ p {
 
 
 .img-hero {
-    mask-image: linear-gradient(to bottom, #00000000 17%,
-            /* Arriba: transparente (invisible) */
-            #000000 41%,
-            /* Inicio del área visible */
-            #00000000 90%,
-            /* Fin del área visible */
-            #00000000 100%
-            /* Abajo: transparente (invisible) */
-        );
-    width: 100%;
-    height: 100%;
+      top: 36%;
+    position: relative;
+    mask-image: linear-gradient(to bottom, #00000000 17%, #000000 41%, #00000000 90%, #00000000 100%);
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 55%;
     object-fit: cover;
 }
 
@@ -172,11 +164,11 @@ h1 {
 
 
 .title-hero__container {
-    gap: .2rem;
+       gap: .2rem;
     display: flex;
     position: relative;
-    bottom: 20rem;
-    width: 88%;
+    bottom: 14rem;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -184,7 +176,7 @@ h1 {
 
 @media (min-width: 1000px) {
     .title-hero__container {
-        bottom: 10rem;
+        bottom: 1rem;
     }
 
 }
@@ -248,6 +240,11 @@ h1 {
 }
 
 @media (min-width: 1001px) {
+
+    .img-hero{
+        top: 25%;
+        height: 82%;
+    }
 
     p,
     .tasa-bcv b,
