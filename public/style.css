@@ -137,6 +137,7 @@ p {
     align-items: center;
     position: relative;
     z-index: 10;
+    top: -13%;
     text-align: center;
 }
 
@@ -237,9 +238,17 @@ h1 {
     form {
         font-size: 2rem;
     }
+
+    .content{
+        top: -13%;
+    }
 }
 
 @media (min-width: 1001px) {
+
+    .content{
+        top: -3%;
+    }
 
     .img-hero{
         top: 25%;
